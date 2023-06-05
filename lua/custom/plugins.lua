@@ -37,6 +37,12 @@ local plugins = {
     end,
   },
   {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function()
+      return require "custom.configs.treesitter"
+    end,
+  },
+  {
     "jose-elias-alvarez/null-ls.nvim",
     ft = {"python"},
     opts = function()
