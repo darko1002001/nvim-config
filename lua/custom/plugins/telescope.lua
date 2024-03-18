@@ -4,6 +4,7 @@ return {
     event = 'VimEnter',
     branch = '0.1.x',
     dependencies = {
+      'nvim-neotest/neotest',
       'nvim-lua/plenary.nvim',
       { -- If encountering errors, see telescope-fzf-native README for install instructions
         'nvim-telescope/telescope-fzf-native.nvim',
@@ -47,6 +48,12 @@ return {
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
+      local execute_tests = function(prompt_bufnr)
+        local entry = require('telescope.actions.state').get_selected_entry(prompt_bufnr)
+        require('telescope.actions').close(prompt_bufnr)
+        require('neotest').run.run(entry.path)
+      end
+
       require('telescope').setup {
         defaults = {
           layout_strategy = 'horizontal',
@@ -57,6 +64,11 @@ return {
           },
           sorting_strategy = 'ascending',
           --- other configs
+          mappings = {
+            n = {
+              ['T'] = execute_tests,
+            },
+          },
         },
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
