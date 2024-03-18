@@ -132,8 +132,7 @@ return {
       end, { desc = '[S]earch [N]eovim files' })
 
       local file_browser = require('telescope').extensions.file_browser
-      -- vim.keymap.set('n', '<leader>sp', 'Telescope file_browser path=%:p:h select_buffer=true<CR>', { desc = '[S]earch Project Structure' })
-      vim.keymap.set('n', '<leader>sp', function()
+      vim.keymap.set('n', '-', function()
         file_browser.file_browser { path = '%:p:h', select_buffer = true }
       end, { desc = '[S]earch Project Structure' })
     end,
