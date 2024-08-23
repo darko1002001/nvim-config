@@ -87,6 +87,7 @@ return {
             -- disables netrw and use telescope-file-browser in its place
             hijack_netrw = true,
             grouped = true,
+            hide_parent_dir = true,
           },
         },
       }
